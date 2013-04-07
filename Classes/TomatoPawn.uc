@@ -11,3 +11,17 @@ simulated function Tick(float DeltaTime)
 
 	SetLocation(tmpLocation);
 }
+
+function bool Dodge(eDoubleClickDir DoubleClickMove)
+{
+	return false;
+}
+
+defaultproperties
+{
+	ControllerClass=class'Tomato.TomatoBot'
+	bCanStrafe=false
+	MaxStepHeight=50.0
+	MaxJumpHeight=96
+	JumpZ=550
+}
