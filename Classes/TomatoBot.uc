@@ -1,0 +1,1 @@
+class TomatoBot extends UTBot;

@@ -1,0 +1,1 @@
+class TomatoHUD extends UTHUD;
