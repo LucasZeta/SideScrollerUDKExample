@@ -11,6 +11,7 @@ var() int CoinsNeededInThisLevel;
 function CollectCoin(SeqAct_TMTCollectCoin Action)
 {
 	CoinsCollected++;
+	TestWinningConditions();
 }
 
 function AddPoints(SeqAct_TMTGivePoints Action)
@@ -21,6 +22,22 @@ function AddPoints(SeqAct_TMTGivePoints Action)
 function SetCoinsNeeded(SeqAct_TMTSetCoinsNeeded Action)
 {
 	CoinsNeededInThisLevel = Action.NumCoins;
+}
+
+exec function TestWinningConditions()
+{
+	`log("TestWinningConditions() : Checking winning conditions");
+	`log("TestWinningConditions() : Collected: " $ CoinsCollected);
+	`log("TestWinningConditions() : Needed: " $ CoinsNeededInThisLevel);
+
+	if ( (CoinsCollected > 0) && (CoinsNeededInThisLevel > 0) && (CoinsCollected >= CoinsNeededInThisLevel) )
+	{
+		`log("TestWinningConditions() : Victory!");
+	}
+	else
+	{
+		`log("TestWinningConditions() : Go collect more coins!");
+	}
 }
 
 defaultproperties
