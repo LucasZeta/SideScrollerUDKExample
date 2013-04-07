@@ -4,5 +4,5 @@ defaultproperties
 {
 	ObjName="Collect Coin"
 		ObjCategory="Tomato"
-	HandleName="CollectCoin"
+	HandlerName="CollectCoin"
 }
