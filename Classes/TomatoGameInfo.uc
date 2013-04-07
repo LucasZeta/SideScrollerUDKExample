@@ -2,7 +2,7 @@ class TomatoGameInfo extends UTGame;
 
 defaultproperties
 {
-	MapPrefixes(0)='TMT'
+	MapPrefixes(0)="TMT"
 	DefaultPawnClass=class'Tomato.TomatoPawn'
 	PlayerControllerClass=class'Tomato.TomatoPlayerController'
 	BotClass=class'Tomato.TomatoBot'
