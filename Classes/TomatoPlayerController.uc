@@ -1,0 +1,2 @@
+class TomatoPlayerController extends UDNPlayerController
+	dependson(UDNPlayerController);
