@@ -31,3 +31,14 @@ function DrawHealthBar(float Health)
     Canvas.Font = class'Engine'.static.GetMediumFont();
     Canvas.DrawText("Health: " $ HealthPercentage);
 }
+
+function DrawGameHud()
+{
+	if (!PlayerOwner.IsDead())
+	{
+		if (PlayerOwner.Pawn.HealthMax > 0)
+		{
+			DrawHealthBar(float(PlayerOwner.Pawn.Health) / float(PlayerOwner.Pawn.HealthMax));
+		}
+	}
+}
