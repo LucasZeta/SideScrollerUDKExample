@@ -44,11 +44,18 @@ function DrawHealthBar(float Health)
 
 function DrawGameHud()
 {
+	local TomatoPlayerController ThisPlayerController;
+
+	ThisPlayerController = TomatoPlayerController(PlayerOwner);
+
 	if (!PlayerOwner.IsDead())
 	{
 		if (PlayerOwner.Pawn.HealthMax > 0)
 		{
 			DrawHealthBar(float(PlayerOwner.Pawn.Health) / float(PlayerOwner.Pawn.HealthMax));
 		}
+
+		DrawString("Coins: " $ ThisPlayerController.CoinsCollected $ "/" $ ThisPlayerController.CoinsNeededInThisLevel, 20, 40, 140, 80, 0, 200);
+		DrawString("Score: " $ ThisPlayerController.Points, 20, 60, 0, 80, 160, 200);
 	}
 }
