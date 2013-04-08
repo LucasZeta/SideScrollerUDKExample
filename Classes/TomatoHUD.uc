@@ -1,5 +1,14 @@
 class TomatoHUD extends UTHUD;
 
+function DrawString(string Text, int PositionX, int PositionY, int ColorR, int ColorG, int ColorB, int ColorA)
+{
+	Canvas.SetPos(PositionX, PositionY);
+	Canvas.SetDrawColor(ColorR, ColorG, ColorB, ColorA);
+
+	Canvas.Font = class'Engine'.static.GetMediumFont();
+	Canvas.DrawText(Text);
+}
+
 function DrawHealthBar(float Health)
 {
 	local int CurrentBarWidth;
@@ -23,13 +32,14 @@ function DrawHealthBar(float Health)
 
 	// Empty part of the health bar.
 	Canvas.SetPos(BarPositionX + CurrentBarWidth, BarPositionY);
-    Canvas.SetDrawColor(200, 255, 200, 110);
-    Canvas.DrawRect(MaxBarWidth - CurrentBarWidth, BarHeight);
+	Canvas.SetDrawColor(200, 255, 200, 110);
+	Canvas.DrawRect(MaxBarWidth - CurrentBarWidth, BarHeight);
 
-    Canvas.SetPos(BarPositionX + MaxBarWidth + 10, BarPositionY);
-    Canvas.SetDrawColor(0, 200, 0, 200);
-    Canvas.Font = class'Engine'.static.GetMediumFont();
-    Canvas.DrawText("Health: " $ HealthPercentage);
+	DrawString(
+		"Health: " $ HealthPercentage,
+		BarPositionX + MaxBarWidth + 10, BarPositionY,
+		0, 200, 0, 200
+	);
 }
 
 function DrawGameHud()
