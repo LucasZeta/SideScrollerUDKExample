@@ -13,6 +13,19 @@ function ConfigureBot(SeqAct_TMTConfigureBot Action)
 	MaxFireRange = Action.MaxFireRange;
 }
 
+state ChargingNoStrafe extends Charging
+{
+	function bool StrafeFromDamage(float Damage, class<DamageType> DamageType, bool bFindDest)
+	{
+		return false;
+	}
+
+	function bool TryStrafe(vector sideDir)
+	{
+		return false;
+	}
+}
+
 defaultproperties
 {
 	MaxFireRange = 500
