@@ -11,6 +11,34 @@ function ConfigureBot(SeqAct_TMTConfigureBot Action)
 	PatrolStart = actor(Action.PatrolStart);
 	PatrolEnd = actor(Action.PatrolEnd);
 	MaxFireRange = Action.MaxFireRange;
+
+	SetTimer(0.3, true, 'ScanForPlayers');
+}
+
+function bool ShouldStrafeTo(Actor Waypoint)
+{
+	return false;
+}
+
+function ScanForPlayers()
+{
+	local vector TargetLocation;
+	TargetLocation = Controller(Target).Pawn.Location;
+
+	if ( (Target != none) && (VSize(TargetLocation - Pawn.Location) < MaxFireRange) && (FastTrace(TargetLocation, Pawn.Location,, true)) )
+	{
+		Focus = Target;
+		Enemy = Controller(Target).Pawn;
+
+		VisibleEnemy = Enemy;
+		EnemyVisibilityTime = WorldInfo.TimeSeconds;
+		bEnemyIsVisible = true;
+
+		if (!IsInState('ChargingNoStrafe'))
+		{
+			GotoState('ChargingNoStrafe');
+		}
+	}
 }
 
 state Defending
